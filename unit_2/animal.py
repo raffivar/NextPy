@@ -11,8 +11,8 @@ class Wolf:
 
 
 def main():
-    wolf1 = Wolf("Raffi", 33)
-    wolf2 = Wolf("Karo", 28)
+    wolf1 = Wolf("Karo", 28)
+    wolf2 = Wolf("Fenris", 33)
     wolf2.birthday()
     print(wolf1.get_age())
     print(wolf2.get_age())
