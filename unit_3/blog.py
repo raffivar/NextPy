@@ -75,14 +75,13 @@ class Special(PasswordMissingCharacter):
         return super(Special, self).__str__() + " (Special)"
 
 
-def is_valid_username(username):
+def check_username(username):
     for char in username:
         if not char.isalpha() and not char.isdigit() and char != "_":
-            return False
-    return True
+            raise UsernameContainsIllegalCharacter(username)
 
 
-def is_valid_password(password):
+def check_password(password):
     char_dict = {"upper": 0, "lower": 0, "digit": 0, "special": 0}
 
     for char in password:
@@ -104,8 +103,6 @@ def is_valid_password(password):
     if char_dict["special"] == 0:
         raise Special(PasswordMissingCharacter)
 
-    return True
-
 
 def check_input(username, password):
     try:
@@ -113,14 +110,14 @@ def check_input(username, password):
             raise UsernameTooShort(username)
         elif len(username) > 16:
             raise UsernameTooLong(username)
-        elif not is_valid_username(username):
-            raise UsernameContainsIllegalCharacter(username)
-        elif len(password) < 8:
+        check_username(username)
+
+        if len(password) < 8:
             raise PasswordTooShort(password)
         elif len(password) > 40:
             raise PasswordTooLong(password)
-        elif not is_valid_password(password):
-            raise PasswordMissingCharacter(password)
+        check_password(password)
+
     except Exception as e:
         print(e)
     else:
