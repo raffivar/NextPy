@@ -1,7 +1,6 @@
 def parse_ranges(ranges):
-    ranges_str_gen = (rng for rng in ranges.split(','))
-    ranges_tup_gen = ((rng.split('-')) for rng in ranges_str_gen)
-    ranges_rng_gen = (range(int(rng[0]), int(rng[1]) + 1) for rng in ranges_tup_gen)
+    ranges_str_gen = (rng.split('-') for rng in ranges.split(','))
+    ranges_rng_gen = (range(int(rng[0]), int(rng[1]) + 1) for rng in ranges_str_gen)
     num_gen = (num for rng in ranges_rng_gen for num in rng)
 
     lst = []
