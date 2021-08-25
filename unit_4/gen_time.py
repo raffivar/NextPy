@@ -35,7 +35,7 @@ def gen_months():
         yield i
 
 
-def gen_days(month, leap_year=True):
+def gen_days(month, leap_year):
     stop = 0
     if month == 2:
         if leap_year:
