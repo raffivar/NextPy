@@ -52,7 +52,7 @@ def gen_days(month, leap_year):
 
 
 def gen_date():
-    for y in gen_years(2020):
+    for y in gen_years():
         for m in gen_months():
             for d in gen_days(m, is_leap_year(y)):
                 for gt in gen_time():
