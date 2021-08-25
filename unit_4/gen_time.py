@@ -58,9 +58,11 @@ def gen_date():
 
 
 def main():
-    for gd in gen_date():
+    gd = gen_date()
+    for i in range(5):
+        date = next(gd)
         for gt in gen_time():
-            print(gd, gt)
+            print("{} {}".format(date, gt))
 
 
 if __name__ == "__main__":
