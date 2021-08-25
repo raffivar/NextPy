@@ -55,19 +55,14 @@ def gen_date():
     for y in gen_years(2020):
         for m in gen_months():
             for d in gen_days(m, is_leap_year(y)):
-                yield "%02d/%02d/%0004d" % (d, m, y)
+                for gt in gen_time():
+                    yield "%02d/%02d/%0004d %s" % (d, m, y, gt)
 
 
 def main():
     gd = gen_date()
-
-    for i in range(5):
-        date = next(gd)
-        for gt in gen_time():
-            print("{} {}".format(date, gt))
-
-    # for i in range(700):
-    #     print(next(gd))
+    for i in range(1000000):
+        print(next(gd))
 
 
 if __name__ == "__main__":
