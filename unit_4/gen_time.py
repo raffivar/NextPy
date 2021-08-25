@@ -36,18 +36,18 @@ def gen_months():
 
 
 def gen_days(month, leap_year=True):
+    stop = 0
     if month in (1, 3, 5, 7, 8, 10, 12):
-        for i in range(1, 32):
-            yield i
-    if month in (2, 4, 6, 9, 11):
+        stop = 32
+    elif month in (2, 4, 6, 9, 11):
         stop = 31
         if month == 2:
             if leap_year:
                 stop = 30
             else:
                 stop = 29
-        for i in range(1, stop):
-            yield i
+    for i in range(1, stop):
+        yield i
 
 
 def gen_date():
