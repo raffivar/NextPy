@@ -1,3 +1,6 @@
+import types
+
+
 def check_id_valid(id_number):
     """Checks if an ID number is valid
     :param id_number: represents an ID number
@@ -49,23 +52,24 @@ class IDIterator:
 
 
 def main():
+    # assumed to be valid (digits only + 9 chars exactly + >= 100000000)
     id_num = int(input("Please supply ID number: "))
-    gen_or_it = input("Generator or Iterator (gen/it?): ").lower()
 
-    if gen_or_it == "gen":
-        fun = get_next_id(id_num)
-        try:
-            for i in range(10):
-                print(next(fun))
-        except StopIteration:
-            print("Max ID (999999999) reached")
-    elif gen_or_it == "it":
-        it = IDIterator(id_num)
+    # it will contain either a generator or an iterator, depends on the input
+    gen_or_it = input("Generator or Iterator (gen/it?): ").lower()
+    it = get_next_id(id_num) if gen_or_it == "gen" \
+        else IDIterator(id_num) if "it" \
+        else None
+
+    # The generator and iterator generally work the same
+    if isinstance(it, types.GeneratorType) or isinstance(it, IDIterator):
         try:
             for i in range(10):
                 print(next(it))
         except StopIteration:
             print("Max ID (999999999) reached")
+    else:
+        print("Neither gen or it were chosen")
 
 
 if __name__ == "__main__":
