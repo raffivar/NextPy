@@ -55,8 +55,9 @@ def main():
     # assumed to be valid (digits only + 9 chars exactly + >= 100000000)
     id_num = int(input("Please supply ID number: "))
 
-    # it will contain either a generator or an iterator, depends on the input
     gen_or_it = input("Generator or Iterator (gen/it?): ").lower()
+    # 'it' will contain either a generator or an iterator, depends on the input
+    # named 'it' since generator inherits from iterator
     it = get_next_id(id_num) if gen_or_it == "gen" \
         else IDIterator(id_num) if "it" \
         else None
