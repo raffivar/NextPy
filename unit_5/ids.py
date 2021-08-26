@@ -17,7 +17,7 @@ def check_id_valid(id_number):
     return sum(id_united) % 10 == 0
 
 
-def get_next_id(curr_id=100000000 - 1):
+def id_generator(curr_id=100000000 - 1):
     """Generator method that yields the next valid ID
     :param curr_id: the start ID - is incremented within the method
     :type curr_id: int"""
@@ -61,7 +61,7 @@ def main():
     gen_or_it = input("Generator or Iterator (gen/it?): ").lower()
     # 'it' will contain either a generator or an iterator, depends on the input
     # named 'it' since generator inherits from iterator
-    it = get_next_id(id_num) if gen_or_it == "gen" \
+    it = id_generator(id_num) if gen_or_it == "gen" \
         else IDIterator(id_num) if "it" \
         else None
 
