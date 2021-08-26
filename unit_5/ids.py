@@ -1,4 +1,4 @@
-import types
+import collections.abc
 
 
 def check_id_valid(id_number):
@@ -62,8 +62,8 @@ def main():
         else IDIterator(id_num) if "it" \
         else None
 
-    # The generator and iterator generally work the same
-    if isinstance(it, types.GeneratorType) or isinstance(it, IDIterator):
+    # only checking if iterator since generator inherits from iterator
+    if isinstance(it, collections.abc.Iterator):
         try:
             for i in range(10):
                 print(next(it))
