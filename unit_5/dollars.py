@@ -6,7 +6,7 @@ def main():
     bill_amt = 1
     while bill_amt <= len(bills):
         combos = combinations(bills, bill_amt)
-        combo_set = set(filter(lambda st: sum(st) == 100, combos))
+        combo_set = set(filter(lambda combo: sum(combo) == 100, combos))
         if len(combo_set) > 0:
             print("with {} bills: {}".format(bill_amt, combo_set))
         bill_amt += 1
