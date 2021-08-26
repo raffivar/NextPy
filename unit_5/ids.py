@@ -2,11 +2,15 @@ def check_id_valid(id_number):
     """Checks if an ID number is valid
     :param id_number: represents an ID number
     :type id_number: int
-    :return: True if the id_number is valid, false otherwise
+    :return: True if the id_number is valid, false otherwise_
     :rtype: bool"""
     id_list = list(map(int, (str(id_number))))
-    id_mult = list(map(lambda item: 2 ** (item[0] % 2) * item[1], enumerate(id_list)))
-    id_united = list(map(lambda n: (n % 10 + n // 10) if n > 0 else n, list(id_mult)))
+    # t = item (tuple) in enumerator, consisted of: (index, digit)
+    # multiplying each digit with 2 powered by index % 2 (2^0 == 1, 2^1 == 2)
+    id_mult = list(map(lambda t: t[1] * (2 ** (t[0] % 2)), enumerate(id_list)))
+    # summing digits will work for all nums (even if n < 10)
+    # safe to assume n is 2 digits max (max value is 18)
+    id_united = list(map(lambda n: (n // 10 + n % 10), list(id_mult)))
     return sum(id_united) % 10 == 0
 
 
