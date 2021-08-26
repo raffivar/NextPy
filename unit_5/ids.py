@@ -9,7 +9,7 @@ def check_id_valid(id_number):
     :rtype: bool"""
     id_list = list(map(int, (str(id_number))))
     # t = item (tuple) in enumerator, consisted of: (index, digit)
-    # multiplying each digit with 2 powered by index % 2 (2^0 == 1, 2^1 == 2)
+    # multiplying each digit with 2^(index % 2) ---> 2^0 == 1, 2^1 == 2
     id_mult = list(map(lambda t: t[1] * (2 ** (t[0] % 2)), enumerate(id_list)))
     # summing digits will work for all nums (even if n < 10)
     # safe to assume n is 2 digits max (max value is 18)
