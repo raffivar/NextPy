@@ -36,8 +36,11 @@ def main():
 
     if gen_or_it == "gen":
         fun = get_next_id(id_num)
-        for i in range(10):
-            print(next(fun))
+        try:
+            for i in range(10):
+                print(next(fun))
+        except StopIteration:
+            print("Max ID (999999999) reached")
     elif gen_or_it == "it":
         it = IDIterator(id_num)
         for i in range(10):
