@@ -29,6 +29,9 @@ def get_next_id(curr_id=100000000 - 1):
 
 
 class IDIterator:
+    """A class that represents a valid ID iterator
+    __next__ will return the next valid id within 100000000 and 999999999"""
+
     def __init__(self, start=100000000 - 1):
         """Inits the class with a default start ID
         :param start: the start ID
