@@ -1,7 +1,14 @@
 import tkinter as tki
-from PIL import Image
 
 FONT_SIZE = 18
+
+
+def show_pic(app):
+    img = tki.PhotoImage(file="fav_video.png")
+    canvas = tki.Canvas(app, width=img.width(), height=img.height())
+    canvas.pack(side="top")
+    canvas.create_image(0, 0, anchor='nw', image=img)
+    app.mainloop()
 
 
 def main():
@@ -15,10 +22,10 @@ def main():
     app.lbl_question["text"] = "What is my favorite video?"
 
     app.btn_answer = tki.Button()
-    app.btn_answer.pack(side="bottom")
+    app.btn_answer.pack(side="top")
     app.btn_answer.config(font=("Courier", FONT_SIZE))
     app.btn_answer["text"] = "Click here to find out"
-    app.btn_answer["command"] = lambda: Image.open("fav_vid.png").show()
+    app.btn_answer["command"] = lambda: show_pic(root)
 
     app.mainloop()
 
