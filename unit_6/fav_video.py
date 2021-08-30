@@ -5,10 +5,10 @@ FONT_SIZE = 18
 
 def show_pic(app):
     img = tki.PhotoImage(file="fav_video.png")
-    canvas = tki.Canvas(app, width=img.width(), height=img.height())
-    canvas.pack(side="top")
-    canvas.create_image(0, 0, anchor='nw', image=img)
-    app.mainloop()
+    lbl_img = tki.Label(app, width=img.width(), height=img.height())
+    lbl_img.pack(side="top")
+    lbl_img.image = img
+    lbl_img.configure(image=img)
 
 
 def main():
