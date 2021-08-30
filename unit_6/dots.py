@@ -45,23 +45,24 @@ second = (
 )
 
 
-def draw(dots):
-    t.color('red', 'yellow')
+def draw(dots, color):
+    t.color('red', color)
     t.penup()
     ix = 0
     iy = 1
     t.goto(dots[ix], -dots[iy])
     t.pendown()
-
+    t.begin_fill()
     while ix < len(dots):
         t.goto(dots[ix], -dots[iy])
         ix += 2
         iy += 2
+    t.end_fill()
 
 
 def main():
-    draw(first)
-    draw(second)
+    draw(first, 'yellow')
+    draw(second, 'purple')
     t.done()
 
 
