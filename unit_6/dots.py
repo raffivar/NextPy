@@ -75,11 +75,25 @@ def draw2():
     img.show()
 
 
+def convert_coord(index, value, delta_x, delta_y, resize):
+    if index % 2 == 0:
+        return value * resize + delta_x
+    else:
+        return value * resize + delta_y
+
+
+def convert_coords(coords, delta_x=0, delta_y=0, resize=1.0):
+    converted_list = []
+    for coord in enumerate(coords):
+        converted_list.append(convert_coord(coord[0], coord[1], delta_x, delta_y, resize))
+    return converted_list
+
+
 def draw3():
     img = Image.open("dots.jpg")
     draw = ImageDraw.Draw(img)
-    draw.polygon(first, fill='red')
-    draw.polygon(second, fill='red')
+    draw.polygon(convert_coords(first, 300, 150, 0.6), outline='black', fill='white')
+    draw.polygon(convert_coords(second, 300, 150, 0.6), outline='black', fill='white')
     img.show()
 
 
