@@ -92,8 +92,8 @@ def convert_coords(coords, delta_x=0, delta_y=0, resize=1.0):
 def draw3():
     img = Image.open("dots.jpg")
     draw = ImageDraw.Draw(img)
-    draw.polygon(convert_coords(first, 300, 150, 0.6), outline='black', fill='white')
-    draw.polygon(convert_coords(second, 300, 150, 0.6), outline='black', fill='white')
+    draw.polygon(convert_coords(first, 300, 150, 0.6), outline='white', fill='black')
+    draw.polygon(convert_coords(second, 300, 150, 0.6), outline='white', fill='black')
     img.show()
 
 
