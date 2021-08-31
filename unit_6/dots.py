@@ -93,8 +93,14 @@ def draw_shape(draw, resize=1.0, delta_x=0, delta_y=0, fill='black', outline='wh
 def draw3():
     img = Image.open("dots.jpg")
     draw = ImageDraw.Draw(img)
+    for i in range(30, 130, 30):
+        draw_shape(draw, 0.3, i, 270)
+    for i in range(130, 300, 30):
+        draw_shape(draw, 0.4, i, 230)
     draw_shape(draw, 0.6, 300, 150)
     draw_shape(draw, 0.6, 350, 150)
+    for i in range(430, 490, 30):
+        draw_shape(draw, 0.3, i, 270)
     img.show()
 
 
