@@ -75,8 +75,16 @@ def draw2():
     img.show()
 
 
+def draw3():
+    img = Image.open("dots.jpg")
+    draw = ImageDraw.Draw(img)
+    draw.polygon(first, fill='red')
+    draw.polygon(second, fill='red')
+    img.show()
+
+
 def main():
-    draw1()
+    draw3()
 
 
 if __name__ == "__main__":
