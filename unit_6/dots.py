@@ -1,4 +1,5 @@
 import turtle as t
+from PIL import Image, ImageDraw
 
 # list of dots, in the following format: [x, y, x, y, x, y,...]
 first = (
@@ -45,7 +46,7 @@ second = (
 )
 
 
-def draw(dots, color):
+def draw_with_turtle(dots, color):
     t.color('red', color)
     t.penup()
     ix = 0
@@ -60,10 +61,22 @@ def draw(dots, color):
     t.end_fill()
 
 
-def main():
-    draw(first, 'yellow')
-    draw(second, 'purple')
+def draw1():
+    draw_with_turtle(first, 'yellow')
+    draw_with_turtle(second, 'purple')
     t.done()
+
+
+def draw2():
+    img = Image.new('RGB', (500, 500))
+    draw = ImageDraw.Draw(img)
+    draw.polygon(first, fill='white')
+    draw.polygon(second, fill='white')
+    img.show()
+
+
+def main():
+    draw1()
 
 
 if __name__ == "__main__":
