@@ -75,7 +75,7 @@ def draw2():
     img.show()
 
 
-def coords_converted(coords, resize=1.0, delta_x=0, delta_y=0):
+def coords_converted(coords, resize, delta_x, delta_y):
     converted_list = []
     for coord in enumerate(coords):
         if coord[0] % 2 == 0:
@@ -85,13 +85,16 @@ def coords_converted(coords, resize=1.0, delta_x=0, delta_y=0):
     return converted_list
 
 
+def draw_shape(draw, resize=1.0, delta_x=0, delta_y=0, fill='black', outline='white'):
+    draw.polygon(coords_converted(first, resize, delta_x, delta_y), fill, outline)
+    draw.polygon(coords_converted(second, resize, delta_x, delta_y), fill, outline)
+
+
 def draw3():
     img = Image.open("dots.jpg")
     draw = ImageDraw.Draw(img)
-    draw.polygon(coords_converted(first, 0.6, 300, 150), outline='white', fill='black')
-    draw.polygon(coords_converted(second, 0.6, 300, 150), outline='white', fill='black')
-    draw.polygon(coords_converted(first, 0.6, 350, 150), outline='white', fill='black')
-    draw.polygon(coords_converted(second, 0.6, 350, 150), outline='white', fill='black')
+    draw_shape(draw, 0.6, 300, 150)
+    draw_shape(draw, 0.6, 350, 150)
     img.show()
 
 
